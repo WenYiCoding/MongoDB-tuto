@@ -1,0 +1,105 @@
+1. Install MongoDB, Install as Windows Service (to run at background)
+https://www.mongodb.com/try/download/community
+
+2. Install mongosh (Shell for MongoDB), Set folder contain exe as system path in System Environment Variables
+https://www.mongodb.com/try/download/shell
+
+3. Start mongodb
+> mongosh
+
+4. Show all available databases, DB with no collection will not shown
+> show dbs
+
+5. Switch to database, will create if not found
+> use {db name}
+
+6. Create collection
+> db.createCollection("collection name")
+
+7. Drop database
+> db.dropDatabase()
+
+8. Insert document by one, collection will be created if no found
+> db.collectionName.insertOne({Key:Value})
+
+9. Find all documents within collection
+> db.collectionName.find()
+
+10. Insert many documents
+> db.collectionName.insertMany([{Key:Value}, {Key:Value}])
+
+11. Data types
+{
+    string: "Te xt",
+    integer: 123,
+    doubles: 24.6,
+    boolean: true,
+    jsObject: new Obj(),
+    null: null,
+    arrays: [1, 2, 3],
+    nestedDocument: {key1: value1, key2: value2},
+}
+
+12. Sort documents
+> db.collectionName.find().sort({key: 1(ascending) / -1(descending)})
+
+13. Limit numbers of return entries
+> db.collectionName.find().limit(1)
+
+14. Advanced find
+> db.collectionName.find({query}, {projection})
+query = key: 1(ascending)/-1(descending), no query returns all
+projection = key: true/false, all keys are always return unless one key is set to true, _id always return unless explicitly set to false
+
+15. Update documents
+> db.collectionName.updateOne({filter}, {update})
+> db.collectionName.updateMany({filter}, {update})
+filter = key: value, to filter and find the particular data
+update = operator: {key, value}
+operator = [$set, $unset]
+
+key: {$exist: true/false} = if the key is exist
+
+16. MongoDB Compass can export the database
+
+17. Delete collection
+> db.collectionName.deleteOne({filter})
+> db.collectionName.deleteMany({filter})
+
+18. Comparison operators
+key: {$operator: value}
+$ne = "!="
+$lt = "<"
+$lte = "<="
+$gt = ">"
+$gte = ">="
+$in = "n"
+$nin = "!n"
+
+19. Logical operators
+{$operator: [{condition1}, {condition2}]}
+$and
+$not
+$nor
+$or
+
+20. Check query details
+> db.collecttionName.find().explain("executionStats")
+
+21. Create index for faster query
+> db.collectionName.createIndex({condition})
+
+22. Show all indexes
+> db.collectionName.getIndexes()
+
+23. Drop index
+> db.collectionName.dropIndex("indexName")
+
+24. Show collections
+> show collections
+
+25. Create collection with size
+> db.createCollection("collectionName", {capped: true, size: sizeInByte, max: entryCount}, {autoIndexId: false})
+
+26. Drop collection
+> db.collectionName.drop()
