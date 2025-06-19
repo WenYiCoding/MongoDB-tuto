@@ -103,3 +103,5 @@ $or
 
 26. Drop collection
 > db.collectionName.drop()
+
+Full documentation: https://www.mongodb.com/docs/manual/introduction/
